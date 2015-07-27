@@ -1,0 +1,53 @@
+<html>
+<head>
+<style>
+    #tabs {border-bottom:1px solid #ccc;height:33px;margin:0 0 10px;padding-top:5px;background:#eee;}
+    #tabs a {float:left;margin-left:2px;border-radius:3px 3px 0 0;border:1px solid #eee;border-bottom-color:#ccc;color:#08c;height:32px;line-height:32px;padding:0 12px;text-decoration:none;}
+    #tabs a:hover {background:#ddd;color:#058;border-color:#ddd #ddd #ccc;}
+    #tabs a.active {background:#fff;color:#555;border-color:#ccc #ccc #fff;}
+    #tabs a.active:hover {background:#fff;color:#555;border-color:#ccc #ccc #fff;}
+    #tabs_data fieldset {display:none;border:0;}
+    #tabs_data fieldset div {font-size:13px;}
+</style>
+</head>
+<body>
+
+<div id="tabs">
+    <a href="s.html" onmouseover="tab_click(0);" >HOME</a>
+    <a href="classicbikes.html" onmouseover="tab_click(1);">CLASSIC BIKES</a>
+    <a href="classiccars.html" onmouseover="tab_click(2);">CLASSIC CARS</a>
+    <a href="bikeauctions.html" onmouseover="tab_click(3);">VINTAGE-BIKES AUCTION</a>
+    <a href="carauctions.html" onmouseover="tab_click(4);">VINTAGE-CARS AUCTION</a>
+    <a href="gallery.html" onmouseover="tab_click(5);">GALLERY</a>
+</div>
+<div id="tabs_data">
+    <fieldset></p><frameset rows="55%,45%">
+<frame src="top.html" name="top">
+<frameset cols="48%,52%">
+<frame src="left.html" name="left">
+<frame src="right.html" name="right">
+</frameset>
+</frameset></p></fieldset>  
+    <fieldset> contents of tab 2</fieldset>
+    <fieldset> contents of tab 3</fieldset>
+    <fieldset> contents of tab 4</fieldset>
+    <fieldset> contents of tab 5</fieldset>
+</div>
+<script>
+    var tabActive=1, tabs=document.getElementById('tabs').getElementsByTagName('A'), tabs_data=document.getElementById('tabs_data').getElementsByTagName('fieldset');
+    function tab_click(x){
+        if(x > -1 && x < tabs.length && x < tabs_data.length){
+            tabs[tabActive].setAttribute('class','');
+            tabs_data[tabActive].style.display='none';
+            tabActive=x;
+            tabs[tabActive].setAttribute('class','active');
+            tabs_data[tabActive].style.display='block';
+        } return false;
+    }tab_click(0);
+    document.onkeydown=function (evnt){ 
+        if(evnt.keyCode==37 || evnt.keyCode==39) 
+        tab_click(tabActive+evnt.keyCode-38); 
+    }
+</script>
+</body>
+</html>
